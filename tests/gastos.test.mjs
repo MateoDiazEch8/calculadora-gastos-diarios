@@ -5,6 +5,7 @@ import {
   crearGasto,
   eliminarGasto,
   fechaLocalActual,
+  obtenerDiasConGastos,
   obtenerGastosDelDia,
   validarMonto,
 } from "../js/gastos.js";
@@ -56,6 +57,17 @@ test("filtra gastos y suma el total de un día con precisión de centavos", () =
   assert.deepEqual(obtenerGastosDelDia(gastos, "2026-10-26").map((gasto) => gasto.id), ["g1", "g2"]);
   assert.equal(calcularTotalDelDia(gastos, "2026-10-26"), 0.3);
   assert.equal(calcularTotalDelDia(gastos, "2026-10-24"), 0);
+});
+
+test("lista los días con gastos una sola vez y del más reciente al más antiguo", () => {
+  const gastos = [
+    { id: "g1", monto: 10, descripcion: "A", fecha: "2026-10-25" },
+    { id: "g2", monto: 5, descripcion: "B", fecha: "2026-10-26" },
+    { id: "g3", monto: 2, descripcion: "C", fecha: "2026-10-25" },
+    { id: "g4", monto: 8, descripcion: "D", fecha: "2026-10-24" },
+  ];
+
+  assert.deepEqual(obtenerDiasConGastos(gastos), ["2026-10-26", "2026-10-25", "2026-10-24"]);
 });
 
 test("elimina un gasto y el total del día se actualiza al recalcular", () => {

@@ -60,6 +60,10 @@ export function obtenerGastosDelDia(gastos, fecha) {
   return gastos.filter((gasto) => gasto.fecha === fecha);
 }
 
+export function obtenerDiasConGastos(gastos) {
+  return [...new Set(gastos.map((gasto) => gasto.fecha))].sort((a, b) => b.localeCompare(a));
+}
+
 export function calcularTotalDelDia(gastos, fecha) {
   const centavos = obtenerGastosDelDia(gastos, fecha).reduce(
     (total, gasto) => total + validarMonto(gasto.monto),

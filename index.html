@@ -14,6 +14,7 @@
         <p class="sobrelinea">CONTROL PERSONAL</p>
         <h1>Mis gastos</h1>
         <p class="fecha" id="fecha-actual"></p>
+        <button class="boton-volver" id="volver-hoy" type="button" hidden>Volver a hoy</button>
       </header>
 
       <section class="resumen" aria-labelledby="titulo-resumen">
@@ -21,7 +22,7 @@
           <p class="resumen-etiqueta" id="titulo-resumen">Total de hoy</p>
           <p class="total" id="total-dia" aria-live="polite">Bs 0,00</p>
         </div>
-        <span class="insignia">HOY</span>
+        <span class="insignia">POR DÍA</span>
       </section>
 
       <section class="panel" aria-labelledby="titulo-registro">
@@ -29,7 +30,7 @@
           <span class="numero-seccion" aria-hidden="true">01</span>
           <div>
             <h2 id="titulo-registro">Registrar un gasto</h2>
-            <p>Agrega el monto y una breve descripción.</p>
+            <p>Agrega el monto y una breve descripción. Los nuevos gastos se guardan en el día actual.</p>
           </div>
         </div>
 
@@ -76,7 +77,19 @@
           </div>
         </div>
         <p class="vacio" id="estado-vacio">Aún no registraste gastos hoy.</p>
-        <ul class="lista-gastos" id="lista-gastos" aria-label="Gastos registrados hoy" hidden></ul>
+        <ul class="lista-gastos" id="lista-gastos" aria-label="Gastos del día seleccionado" hidden></ul>
+      </section>
+
+      <section class="panel panel-historial" aria-labelledby="titulo-historial">
+        <div class="panel-titulo">
+          <span class="numero-seccion" aria-hidden="true">03</span>
+          <div>
+            <h2 id="titulo-historial">Días con gastos</h2>
+            <p>Selecciona un día para revisar sus movimientos.</p>
+          </div>
+        </div>
+        <p class="vacio" id="estado-vacio-dias">Todavía no hay días con gastos.</p>
+        <ul class="lista-dias" id="lista-dias" aria-label="Días con gastos" hidden></ul>
       </section>
     </main>
   </body>

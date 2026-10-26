@@ -3,6 +3,7 @@ import {
   crearGasto,
   eliminarGasto,
   fechaLocalActual,
+  obtenerDiasConGastos,
   obtenerGastosDelDia,
 } from "./gastos.js";
 import { cargarGastos, guardarGastos } from "./almacenamiento.js";
@@ -45,11 +46,17 @@ export function iniciarAplicacion(documento = document, almacenamiento) {
   const entradaDescripcion = documento.querySelector("#descripcion");
   const mensaje = documento.querySelector("#mensaje");
   const total = documento.querySelector("#total-dia");
+  const etiquetaTotal = documento.querySelector("#titulo-resumen");
   const lista = documento.querySelector("#lista-gastos");
   const estadoVacio = documento.querySelector("#estado-vacio");
   const cantidad = documento.querySelector("#cantidad-gastos");
-  const fecha = fechaLocalActual();
-  documento.querySelector("#fecha-actual").textContent = formatearFecha(fecha);
+  const fechaVista = documento.querySelector("#fecha-actual");
+  const tituloGastos = documento.querySelector("#titulo-gastos");
+  const listaDias = documento.querySelector("#lista-dias");
+  const estadoVacioDias = documento.querySelector("#estado-vacio-dias");
+  const botonVolverHoy = documento.querySelector("#volver-hoy");
+  let fechaActual = fechaLocalActual();
+  let fechaSeleccionada = fechaActual;
 
   let gastos;
   try {
@@ -61,16 +68,30 @@ export function iniciarAplicacion(documento = document, almacenamiento) {
   }
 
   function renderizar() {
-    const gastosHoy = obtenerGastosDelDia(gastos, fecha);
-    total.textContent = formatearMonto(calcularTotalDelDia(gastos, fecha));
-    cantidad.textContent = gastosHoy.length === 1
+    const hoy = fechaLocalActual();
+    if (fechaSeleccionada === fechaActual && hoy !== fechaActual) {
+      fechaSeleccionada = hoy;
+    }
+    fechaActual = hoy;
+
+    const gastosDelDia = obtenerGastosDelDia(gastos, fechaSeleccionada);
+    const esHoy = fechaSeleccionada === hoy;
+    fechaVista.textContent = formatearFecha(fechaSeleccionada);
+    etiquetaTotal.textContent = esHoy ? "Total de hoy" : "Total del día";
+    tituloGastos.textContent = esHoy ? "Gastos de hoy" : "Gastos del día";
+    botonVolverHoy.hidden = esHoy;
+    total.textContent = formatearMonto(calcularTotalDelDia(gastos, fechaSeleccionada));
+    cantidad.textContent = gastosDelDia.length === 1
       ? "1 movimiento registrado"
-      : `${gastosHoy.length} movimientos registrados`;
-    estadoVacio.hidden = gastosHoy.length > 0;
-    lista.hidden = gastosHoy.length === 0;
+      : `${gastosDelDia.length} movimientos registrados`;
+    estadoVacio.textContent = esHoy
+      ? "Aún no registraste gastos hoy."
+      : "No hay gastos registrados para este día.";
+    estadoVacio.hidden = gastosDelDia.length > 0;
+    lista.hidden = gastosDelDia.length === 0;
     lista.replaceChildren();
 
-    for (const gasto of [...gastosHoy].reverse()) {
+    for (const gasto of [...gastosDelDia].reverse()) {
       const fila = crearElemento(documento, "li", "gasto");
       const detalle = crearElemento(documento, "div", "gasto-detalle");
       const descripcion = crearElemento(documento, "p", "gasto-descripcion", gasto.descripcion);
@@ -96,20 +117,49 @@ export function iniciarAplicacion(documento = document, almacenamiento) {
       fila.append(detalle, boton);
       lista.append(fila);
     }
+
+    const diasConGastos = obtenerDiasConGastos(gastos);
+    estadoVacioDias.hidden = diasConGastos.length > 0;
+    listaDias.hidden = diasConGastos.length === 0;
+    listaDias.replaceChildren();
+
+    for (const dia of diasConGastos) {
+      const fila = crearElemento(documento, "li", "dia");
+      const botonDia = crearElemento(documento, "button", "boton-dia", formatearFecha(dia));
+      botonDia.type = "button";
+      botonDia.setAttribute("data-fecha", dia);
+      botonDia.setAttribute("aria-pressed", String(dia === fechaSeleccionada));
+      botonDia.addEventListener("click", () => {
+        fechaSeleccionada = dia;
+        mensaje.textContent = "";
+        renderizar();
+      });
+      fila.append(botonDia);
+      listaDias.append(fila);
+    }
   }
+
+  botonVolverHoy.addEventListener("click", () => {
+    fechaSeleccionada = fechaLocalActual();
+    mensaje.textContent = "";
+    renderizar();
+  });
 
   formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
     mensaje.textContent = "";
 
     try {
+      const fechaDeRegistro = fechaLocalActual();
       const gasto = crearGasto({
         monto: entradaMonto.value,
         descripcion: entradaDescripcion.value,
+        fecha: fechaDeRegistro,
       });
       const nuevosGastos = [...gastos, gasto];
       guardarGastos(nuevosGastos, almacenamiento);
       gastos = nuevosGastos;
+      fechaSeleccionada = fechaDeRegistro;
       formulario.reset();
       mensaje.textContent = "Gasto registrado.";
       entradaMonto.focus();
@@ -122,6 +172,10 @@ export function iniciarAplicacion(documento = document, almacenamiento) {
   renderizar();
 }
 
+export function registrarInicio(documento = document, almacenamiento) {
+  documento.addEventListener("DOMContentLoaded", () => iniciarAplicacion(documento, almacenamiento));
+}
+
 if (typeof document !== "undefined") {
-  document.addEventListener("DOMContentLoaded", iniciarAplicacion);
+  registrarInicio(document);
 }
