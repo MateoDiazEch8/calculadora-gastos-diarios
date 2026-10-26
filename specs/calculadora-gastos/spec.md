@@ -23,7 +23,7 @@ Una persona que quiere controlar sus gastos personales diarios.
 - CUANDO el usuario intente registrar un monto igual o menor que Bs 0, el sistema DEBE impedir el registro e indicar que el monto debe ser mayor que cero.
 - CUANDO el usuario intente registrar una descripción vacía, el sistema DEBE impedir el registro e indicar que la descripción es obligatoria.
 - SI el usuario cierra o recarga la aplicación, ENTONCES el sistema DEBE conservar los gastos registrados.
-- Siempre, el sistema DEBE mostrar los gastos del día actual y el total de esos gastos en Bs.
+- CUANDO el usuario abra la aplicación o vuelva a la vista de hoy, el sistema DEBE mostrar los gastos del día actual y el total de esos gastos en Bs.
 - Siempre, el sistema DEBE mostrar el total como la suma de los montos de los gastos del día seleccionado.
 - Siempre, el sistema DEBE mostrar una lista de los días que tengan al menos un gasto registrado.
 - CUANDO el usuario seleccione un día de la lista, el sistema DEBE mostrar los gastos de ese día y su total en Bs.

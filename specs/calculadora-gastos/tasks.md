@@ -26,6 +26,12 @@ Los criterios `C1`–`C11` corresponden a los criterios de aceptación de la sec
 - **Criterios de aceptación de la SPEC:** C7, C8, C9 y C11.
 - **Responsable:** Codex.
 
+## T-5 — Precisar el criterio de la vista diaria
+
+- **Descripción:** aclarar que la vista inicial y el retorno muestran el día actual, mientras que la selección de una fecha muestra ese día.
+- **Criterios de aceptación de la SPEC:** C6 y C9.
+- **Responsable:** Codex.
+
 ## Criterios de avance
 
 - Trabajar una tarea a la vez y crear un commit en español por tarea, con el formato `T-n: descripción`.
