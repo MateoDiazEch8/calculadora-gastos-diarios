@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <title>Mis gastos diarios</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <main class="contenedor">
+      <header class="encabezado">
+        <p class="sobrelinea">CONTROL PERSONAL</p>
+        <h1>Mis gastos</h1>
+        <p class="fecha" id="fecha-actual"></p>
+      </header>
+
+      <section class="resumen" aria-labelledby="titulo-resumen">
+        <div>
+          <p class="resumen-etiqueta" id="titulo-resumen">Total de hoy</p>
+          <p class="total" id="total-dia" aria-live="polite">Bs 0,00</p>
+        </div>
+        <span class="insignia">HOY</span>
+      </section>
+
+      <section class="panel" aria-labelledby="titulo-registro">
+        <div class="panel-titulo">
+          <span class="numero-seccion" aria-hidden="true">01</span>
+          <div>
+            <h2 id="titulo-registro">Registrar un gasto</h2>
+            <p>Agrega el monto y una breve descripción.</p>
+          </div>
+        </div>
+
+        <form id="formulario-gasto" novalidate>
+          <div class="campos">
+            <label class="campo campo-monto" for="monto">
+              <span>Monto</span>
+              <span class="entrada-monto">
+                <span aria-hidden="true">Bs</span>
+                <input
+                  id="monto"
+                  name="monto"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  placeholder="0,00"
+                  aria-describedby="mensaje"
+                />
+              </span>
+            </label>
+            <label class="campo" for="descripcion">
+              <span>Descripción</span>
+              <input
+                id="descripcion"
+                name="descripcion"
+                type="text"
+                autocomplete="off"
+                placeholder="Ej. Almuerzo"
+                aria-describedby="mensaje"
+              />
+            </label>
+            <button class="boton-agregar" type="submit">Agregar gasto</button>
+          </div>
+          <p class="mensaje" id="mensaje" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel panel-lista" aria-labelledby="titulo-gastos">
+        <div class="panel-titulo">
+          <span class="numero-seccion" aria-hidden="true">02</span>
+          <div>
+            <h2 id="titulo-gastos">Gastos de hoy</h2>
+            <p id="cantidad-gastos">Todavía no hay movimientos.</p>
+          </div>
+        </div>
+        <p class="vacio" id="estado-vacio">Aún no registraste gastos hoy.</p>
+        <ul class="lista-gastos" id="lista-gastos" aria-label="Gastos registrados hoy" hidden></ul>
+      </section>
+    </main>
+  </body>
+</html>
