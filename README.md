@@ -32,3 +32,4 @@ Las pruebas usan datos y almacenamiento simulados; no necesitan conexión a inte
 - [Especificación](specs/calculadora-gastos/spec.md)
 - [Plan técnico](specs/calculadora-gastos/plan.md)
 - [Tareas](specs/calculadora-gastos/tasks.md)
+- [Verificación](specs/calculadora-gastos/verificacion.md)

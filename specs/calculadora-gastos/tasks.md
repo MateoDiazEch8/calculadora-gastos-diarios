@@ -60,6 +60,12 @@ Los criterios `CA-01`–`CA-11` están identificados directamente en la sección
 | CA-10 | T-1, T-3 |
 | CA-11 | T-3, T-4 |
 
+## T-8 — Guardar el informe de verificación
+
+- **Descripción:** documentar el estado y la evidencia de cada criterio de aceptación en `verificacion.md` y enlazarlo desde el README.
+- **Criterios de aceptación de la SPEC:** CA-01 a CA-11.
+- **Responsable:** Codex.
+
 ## Criterios de avance
 
 - Trabajar una tarea a la vez y crear un commit en español por tarea, con el formato `T-n: descripción`.
