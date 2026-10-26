@@ -66,6 +66,12 @@ Los criterios `CA-01`–`CA-11` están identificados directamente en la sección
 - **Criterios de aceptación de la SPEC:** CA-01 a CA-11.
 - **Responsable:** Codex.
 
+## T-9 — Registrar la regla de publicación
+
+- **Descripción:** añadir a `AGENTS.md` que no se debe hacer push ni publicar sin una instrucción explícita de la persona usuaria.
+- **Criterios cubiertos:** regla de autorización de Git; no cambia los criterios funcionales de la SPEC.
+- **Responsable:** Codex.
+
 ## Criterios de avance
 
 - Trabajar una tarea a la vez y crear un commit en español por tarea, con el formato `T-n: descripción`.

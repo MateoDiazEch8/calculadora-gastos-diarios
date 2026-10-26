@@ -19,3 +19,4 @@
 
 - Al terminar cada fase, se informa qué se creó y se espera la aprobación explícita de la persona usuaria antes de iniciar la fase siguiente.
 - Durante la implementación, después de cada commit se informa el resultado y se espera que la persona usuaria escriba «sigue» antes de continuar.
+- No se hace `push` ni se publica el repositorio o sus cambios sin una instrucción explícita de la persona usuaria.
