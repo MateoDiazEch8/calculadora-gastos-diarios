@@ -6,7 +6,7 @@ Implementar los comportamientos definidos en `spec.md` para una aplicación pers
 
 ## Stack elegido
 
-Se implementará una aplicación web estática con **HTML, CSS y JavaScript sin framework**, y `localStorage` del navegador para conservar los registros entre recargas y cierres. Esta opción reduce la configuración y permite concentrarse en los comportamientos de la SPEC.
+Se implementará una aplicación web estática con **HTML, CSS y JavaScript sin framework**, y `localStorage` del navegador para conservar los registros entre recargas y cierres. Un servidor HTTP local pequeño, incluido en el proyecto y basado en Node.js, entregará los archivos estáticos durante el desarrollo; no habrá backend ni cuenta.
 
 Se consideró **React con Vite**, pero añade configuración y conceptos que no son necesarios para este alcance.
 
@@ -17,6 +17,8 @@ Los datos quedan en el navegador y dispositivo donde se usó la aplicación. No 
 ```text
 /
 ├── index.html
+├── README.md
+├── server.mjs
 ├── css/
 │   └── styles.css
 ├── js/
@@ -24,8 +26,9 @@ Los datos quedan en el navegador y dispositivo donde se usó la aplicación. No 
 │   ├── gastos.js
 │   └── almacenamiento.js
 └── tests/
-    ├── gastos.test.js
-    └── almacenamiento.test.js
+    ├── gastos.test.mjs
+    ├── almacenamiento.test.mjs
+    └── app.test.mjs
 ```
 
 `app.js` conecta la interfaz con las operaciones; `gastos.js` contiene validación, cálculo de totales y agrupación por fecha; `almacenamiento.js` lee y guarda los gastos. Las pruebas de lógica usan datos simulados y un almacenamiento en memoria.
@@ -54,7 +57,7 @@ No se necesita API externa: los datos ingresados por la persona usuaria son la �
 - Probar validación de monto y descripción, suma de totales, agrupación por fecha y eliminación.
 - Probar carga y guardado con un almacenamiento simulado en memoria, sin acceder a la red.
 - Verificar que los estados vacíos y errores de persistencia se representen en la interfaz.
-- Ejecutar las pruebas antes de dar por terminada cada tarea.
+- Ejecutar `node --test` antes de dar por terminada cada tarea.
 
 ## Temas visuales pendientes
 

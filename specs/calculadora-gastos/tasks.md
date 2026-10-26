@@ -32,6 +32,12 @@ Los criterios `C1`–`C11` corresponden a los criterios de aceptación de la sec
 - **Criterios de aceptación de la SPEC:** C6 y C9.
 - **Responsable:** Codex.
 
+## T-6 — Documentar y servir la aplicación localmente
+
+- **Descripción:** añadir instrucciones de ejecución y pruebas, un servidor estático local sin dependencias y corregir el plan para distinguir servidor estático de backend.
+- **Criterios cubiertos:** estructura de ejecución y estrategia del `plan.md`; no cambia los criterios funcionales de la SPEC.
+- **Responsable:** Codex.
+
 ## Criterios de avance
 
 - Trabajar una tarea a la vez y crear un commit en español por tarea, con el formato `T-n: descripción`.
