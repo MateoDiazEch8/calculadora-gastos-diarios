@@ -18,17 +18,17 @@ Una persona que quiere controlar sus gastos personales diarios.
 
 ## 4. Criterios de aceptación
 
-- El sistema DEBE expresar los montos en bolivianos (Bs) y permitir registrar hasta dos decimales.
-- CUANDO el usuario registre un gasto con un monto mayor que Bs 0 y una descripción no vacía, el sistema DEBE guardar el gasto con la fecha del día actual.
-- CUANDO el usuario intente registrar un monto igual o menor que Bs 0, el sistema DEBE impedir el registro e indicar que el monto debe ser mayor que cero.
-- CUANDO el usuario intente registrar una descripción vacía, el sistema DEBE impedir el registro e indicar que la descripción es obligatoria.
-- SI el usuario cierra o recarga la aplicación, ENTONCES el sistema DEBE conservar los gastos registrados.
-- CUANDO el usuario abra la aplicación o vuelva a la vista de hoy, el sistema DEBE mostrar los gastos del día actual y el total de esos gastos en Bs.
-- Siempre, el sistema DEBE mostrar el total como la suma de los montos de los gastos del día seleccionado.
-- Siempre, el sistema DEBE mostrar una lista de los días que tengan al menos un gasto registrado.
-- CUANDO el usuario seleccione un día de la lista, el sistema DEBE mostrar los gastos de ese día y su total en Bs.
-- CUANDO el usuario elimine un gasto, el sistema DEBE quitarlo de su día y actualizar el total de ese día.
-- SI el día actual o el día seleccionado no tiene gastos, ENTONCES el sistema DEBE mostrar un total de Bs 0 y un mensaje que indique que no hay gastos registrados para ese día.
+- **CA-01.** El sistema DEBE expresar los montos en bolivianos (Bs) y permitir registrar hasta dos decimales.
+- **CA-02.** CUANDO el usuario registre un gasto con un monto mayor que Bs 0 y una descripción no vacía, el sistema DEBE guardar el gasto con la fecha del día actual.
+- **CA-03.** CUANDO el usuario intente registrar un monto igual o menor que Bs 0, el sistema DEBE impedir el registro e indicar que el monto debe ser mayor que cero.
+- **CA-04.** CUANDO el usuario intente registrar una descripción vacía, el sistema DEBE impedir el registro e indicar que la descripción es obligatoria.
+- **CA-05.** SI el usuario cierra o recarga la aplicación, ENTONCES el sistema DEBE conservar los gastos registrados.
+- **CA-06.** CUANDO el usuario abra la aplicación o vuelva a la vista de hoy, el sistema DEBE mostrar los gastos del día actual y el total de esos gastos en Bs.
+- **CA-07.** Siempre, el sistema DEBE mostrar el total como la suma de los montos de los gastos del día seleccionado.
+- **CA-08.** Siempre, el sistema DEBE mostrar una lista de los días que tengan al menos un gasto registrado.
+- **CA-09.** CUANDO el usuario seleccione un día de la lista, el sistema DEBE mostrar los gastos de ese día y su total en Bs.
+- **CA-10.** CUANDO el usuario elimine un gasto, el sistema DEBE quitarlo de su día y actualizar el total de ese día.
+- **CA-11.** SI el día actual o el día seleccionado no tiene gastos, ENTONCES el sistema DEBE mostrar un total de Bs 0 y un mensaje que indique que no hay gastos registrados para ese día.
 
 ## 5. Fuera de alcance
 
